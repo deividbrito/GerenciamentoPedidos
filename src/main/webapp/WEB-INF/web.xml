@@ -1,0 +1,24 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>frontController</servlet-name>
+        <servlet-class>controller.FrontController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>frontController</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>autenticacaoFiltro</filter-name>
+        <filter-class>filter.AutenticacaoFiltro</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>autenticacaoFiltro</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+
+</web-app>

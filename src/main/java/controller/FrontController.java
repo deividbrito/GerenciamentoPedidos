@@ -1,0 +1,59 @@
+package controller;
+
+import controller.command.Command;
+import controller.command.LoginCommand;
+import controller.command.LogoutCommand;
+import controller.command.CadastrarUsuarioCommand;
+import controller.command.ManterPedidoCommand;
+import controller.command.GerarRelatorioCommand;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+
+public class FrontController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        Command command = null;
+
+        if (action != null) {
+            switch (action) {
+                case "login":
+                    command = new LoginCommand();
+                    break;
+                case "logout":
+                    command = new LogoutCommand();
+                    break;
+                case "cadastrarUsuario":
+                    command = new CadastrarUsuarioCommand();
+                    break;
+                case "manterPedido":
+                    command = new ManterPedidoCommand();
+                    break;
+                case "gerarRelatorio":
+                    command = new GerarRelatorioCommand();
+                    break;
+                default:
+                    request.setAttribute("erro", "Ação inválida");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    return;
+            }
+        }
+
+        if (command != null) {
+            command.execute(request, response);
+        }
+    }
+}
+
