@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 public class TestDatabaseConnection {
 
+	//classe de teste para verificar se a conexão com o banco de dados está funcionando
     public static void main(String[] args) {
         try {
             Connection conn = DatabaseConnection.getConnection();

@@ -6,11 +6,13 @@ public class Usuario {
 
     public Usuario() {}
 
+    //construtor
     public Usuario(String login, String senha) {
         this.login = login;
         this.senha = senha;
     }
 
+    //getters e setters
     public String getLogin() {
         return login;
     }

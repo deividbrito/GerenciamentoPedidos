@@ -8,10 +8,12 @@ import java.util.List;
 public class UsuarioDAO {
     private Connection conn;
 
+    // construtor que recebe a conexão com o banco de dados
     public UsuarioDAO(Connection conn) {
         this.conn = conn;
     }
 
+    // método para autenticar um usuário com base no login e senha
     public Usuario autenticar(String login, String senha) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE login = ? AND senha = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -26,6 +28,7 @@ public class UsuarioDAO {
         return null;
     }
 
+    // método para inserir um novo usuário no banco de dados
     public void inserir(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (login, senha) VALUES (?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -35,6 +38,7 @@ public class UsuarioDAO {
         }
     }
 
+    // método para listar todos os usuários no banco de dados
     public List<Usuario> listar() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
         String sql = "SELECT * FROM usuarios";
@@ -47,6 +51,7 @@ public class UsuarioDAO {
         return usuarios;
     }
 
+    // método privado para mapear os dados de um ResultSet para um objeto Usuario
     private Usuario mapUsuario(ResultSet rs) throws SQLException {
         Usuario usuario = new Usuario();
         usuario.setLogin(rs.getString("login"));

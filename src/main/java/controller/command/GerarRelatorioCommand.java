@@ -1,5 +1,6 @@
 package controller.command;
 
+//imports
 import model.dao.PedidoDAO;
 import model.Pedido;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,11 +13,13 @@ public class GerarRelatorioCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
+    	//obtém "nomeCLiente"
         String nomeCliente = request.getParameter("nomeCliente");
 
+        //conecta ao banco de dados
         try (Connection conn = DatabaseConnection.getConnection()) {
-            PedidoDAO pedidoDAO = new PedidoDAO(conn);
-            List<Pedido> pedidos = pedidoDAO.listarPorCliente(nomeCliente);
+            PedidoDAO pedidoDAO = new PedidoDAO(conn); //instancia DAO
+            List<Pedido> pedidos = pedidoDAO.listarPorCliente(nomeCliente); //consulta pedidos filtrados por cliente
 
             request.setAttribute("pedidos", pedidos);
             request.getRequestDispatcher("relatorio.jsp").forward(request, response);

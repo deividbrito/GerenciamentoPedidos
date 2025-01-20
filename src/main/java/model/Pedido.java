@@ -8,7 +8,8 @@ public class Pedido {
     private String descricao;
 
     public Pedido() {}
-
+    
+    //construtor
     public Pedido(int idPedido, String nomeCliente, String enderecoEntrega, double valor, String descricao) {
         this.idPedido = idPedido;
         this.nomeCliente = nomeCliente;
@@ -17,7 +18,7 @@ public class Pedido {
         this.descricao = descricao;
     }
 
-    // Getters e Setters
+    // getters e Setters
     public int getIdPedido() {
         return idPedido;
     }

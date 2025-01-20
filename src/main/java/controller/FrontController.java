@@ -1,5 +1,6 @@
 package controller;
 
+//imports
 import controller.command.Command;
 import controller.command.LoginCommand;
 import controller.command.LogoutCommand;
@@ -15,18 +16,20 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, response); //encaminha requisições get pra processrequest
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, response); //encaminha requisições post pra processrequest
     }
 
+    //processa requisições com base em "action"
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         Command command = null;
 
+        //verifica qual a "action" e chama o command necessário
         if (action != null) {
             switch (action) {
                 case "login":
