@@ -66,6 +66,7 @@
         <ul>
             <li><a href="controller?action=manterPedido">Manter Pedidos</a></li>
             <li><a href="controller?action=gerarRelatorio">Gerar Relatório</a></li>
+            <li><a href="cadastro.jsp">Cadastrar Usuário</a></li>
             <li><a href="controller?action=logout">Sair</a></li>
         </ul>
     </div>

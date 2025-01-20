@@ -100,9 +100,6 @@
             <input type="submit" value="Entrar">
         </form>
         <br>
-         <form action="cadastro.jsp" method="get">
-            <input type="submit" value="Cadastrar Usuário">
-        </form>
     </div>
 </body>
 </html>
