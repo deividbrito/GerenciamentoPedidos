@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    
-    <style>
+    <title>Cadastrar Usuário</title>
+     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -77,31 +76,21 @@
         form > input[type="submit"] {
             margin-top: 20px;
         }
-
-        form > input[type="submit"]:nth-child(2) {
-            background-color: #007BFF;
-        }
-
-        form > input[type="submit"]:nth-child(2):hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form action="controller?action=login" method="post">
+        <h1>Cadastrar Usuário</h1>
+        <form action="controller?action=cadastrarUsuario" method="post">
+            <input type="hidden" name="command" value="CadastrarUsuarioCommand">
+
             <label for="login">Login</label>
             <input type="text" id="login" name="login" required><br><br>
 
             <label for="senha">Senha</label>
             <input type="password" id="senha" name="senha" required><br><br>
 
-            <input type="submit" value="Entrar">
-        </form>
-        <br>
-         <form action="cadastro.jsp" method="get">
-            <input type="submit" value="Cadastrar Usuário">
+            <input type="submit" value="Cadastrar">
         </form>
     </div>
 </body>
